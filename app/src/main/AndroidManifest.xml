@@ -33,6 +33,8 @@
             android:name="com.example.administrador.curso4_tarea1.Activity.AcercadeActivity"
             android:label="@string/title_activity_acercade"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.example.administrador.curso4_tarea1.Activity.ConfiguraCuentaActivity"/>
     </application>
 
 </manifest>

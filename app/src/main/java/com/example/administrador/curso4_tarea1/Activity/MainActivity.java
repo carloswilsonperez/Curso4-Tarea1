@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AcercadeActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.mConfigurarCuenta:
+                Intent intent3 = new Intent(this, ConfiguraCuentaActivity.class);
+                startActivity(intent3);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

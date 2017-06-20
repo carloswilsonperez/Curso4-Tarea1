@@ -12,4 +12,9 @@
         android:id="@+id/mAcercaDe"
         android:orderInCategory="101"
         android:title="@string/menu_acerca_de"/>
+    <item
+        android:id="@+id/mConfigurarCuenta"
+        android:orderInCategory="102"
+        android:title="@string/menu_configurar_cuenta"
+        />
 </menu>

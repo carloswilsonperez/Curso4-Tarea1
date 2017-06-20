@@ -22,12 +22,12 @@ public class PerfilFragment extends Fragment {
     ArrayList<Mascota> mascotas;
     private RecyclerView listaPerfiles;
     public PerfilAdaptador adaptador;
-
+    private static final String KEY_EXTRA_URL = "url";
+    private static final String KEY_EXTRA_LIKE = "like";
 
     public PerfilFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +44,7 @@ public class PerfilFragment extends Fragment {
 
         //Le decimos que el RecyclerView se comporte como un LinearLayoutManager y adquiera todas sus propiedades
         listaPerfiles.setLayoutManager(glm);
-        inicializarListaMascotas(); // Inicializamos la lista de mascotas
+        //    inicializarListaMascotas(); // Inicializamos la lista de mascotas
         inicializaAdaptador();    // Inicializamos el adaptador
 
         return v;
@@ -56,7 +56,7 @@ public class PerfilFragment extends Fragment {
         listaPerfiles.setAdapter(adaptador);
     }
 
-
+    /*
     // Cargo las mascotas a mostrar
     public void inicializarListaMascotas(){
         mascotas = new ArrayList<Mascota>();
@@ -70,5 +70,6 @@ public class PerfilFragment extends Fragment {
         mascotas.add(new Mascota("Yaman", 2, R.drawable.perro01, R.color.fondo_perro01));
         mascotas.add(new Mascota("Yaman", 5, R.drawable.perro01, R.color.fondo_perro01));
     }
+    */
 
 }

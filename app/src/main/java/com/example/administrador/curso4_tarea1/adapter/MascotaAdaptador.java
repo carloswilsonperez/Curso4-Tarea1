@@ -86,7 +86,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         // Constructor
         public MascotaViewHolder(View itemView){
             super(itemView);
-            // Cargo todos las vistas del cardview
+            // Cargo todas las vistas del cardview
             this.imgFoto    = (ImageView) itemView.findViewById(R.id.imgFoto);
             this.btnLike    = (ImageButton) itemView.findViewById(R.id.btnLike);
             this.tvNombre   = (TextView) itemView.findViewById(R.id.tvNombre);

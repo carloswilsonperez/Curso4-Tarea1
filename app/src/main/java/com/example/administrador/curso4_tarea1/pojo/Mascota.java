@@ -6,18 +6,18 @@ package com.example.administrador.curso4_tarea1.pojo;
 
 public class Mascota {
 
-    private int id;
+    private String id;
     private String nombre;
-    private int numLinkes;
-    private int foto;
+    private int Likes;
+    private String urlFoto;
     private int colorFondo;
 
 
     //Contructor
-    public Mascota (String nombre, int numLinkes, int foto, int colorFondo){
+    public Mascota (String nombre, int Likes, String urlFoto, int colorFondo){
         this.nombre = nombre;
-        this.numLinkes = numLinkes;
-        this.foto = foto;
+        this.Likes = Likes;
+        this.urlFoto = urlFoto;
         this.colorFondo = colorFondo;
     }
 
@@ -25,6 +25,13 @@ public class Mascota {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -34,20 +41,20 @@ public class Mascota {
         this.nombre = nombre;
     }
 
-    public int getNumLinkes() {
-        return numLinkes;
+    public int getLikes() {
+        return Likes;
     }
 
-    public void setNumLinkes(int numLinkes) {
-        this.numLinkes = numLinkes;
+    public void setLikes(int likes) {
+        Likes = likes;
     }
 
-    public int getFoto() {
-        return foto;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setFoto(int foto) {
-        this.foto = foto;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public int getColorFondo() {
@@ -56,13 +63,5 @@ public class Mascota {
 
     public void setColorFondo(int colorFondo) {
         this.colorFondo = colorFondo;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
