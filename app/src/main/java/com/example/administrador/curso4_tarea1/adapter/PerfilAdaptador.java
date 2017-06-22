@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.administrador.curso4_tarea1.R;
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -40,8 +42,13 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
     @Override
     public void onBindViewHolder(final PerfilAdaptador.PerfilViewHolder mascotaViewHolder, int position){
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
-        mascotaViewHolder.imgFoto.setImageResource(mascota.getFoto());// Seteo el cardView con la foto recibida del ArrayList
-        mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getNumLinkes()));// Seteo el Número de likes del cardView
+        String ruta = mascota.getUrlFoto();
+        ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
+ /*       Log.i(TAG, "La ruta la url es:"+ ruta);  */
+        Picasso.with(activity) // Libreria para traer las fotos
+                .load(ruta) // trae la foto del usuario
+                .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
+        mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
         mascotaViewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
 
     }

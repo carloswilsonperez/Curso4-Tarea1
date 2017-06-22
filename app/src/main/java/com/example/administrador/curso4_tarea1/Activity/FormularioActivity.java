@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.administrador.curso4_tarea1.R;
-
 import java.util.Properties;
-
+/*
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -19,6 +17,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+*/
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText etMail;
     EditText etMensaje;
     Button btnEnviarComentario;
-    Session session;
+  //  Session session;
 
 
     @Override
@@ -43,7 +42,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         correo = "servidorweb50@gmail.com";
         password = "amapola1";
-
+/*
         btnEnviarComentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,5 +92,6 @@ public class FormularioActivity extends AppCompatActivity {
             }
 
         });
+        */
     }
 }
