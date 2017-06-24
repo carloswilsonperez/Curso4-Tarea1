@@ -38,7 +38,7 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
         for (int i = 0; i < mascotaResponseData.size(); i++) {
             JsonObject mascotaResponseDataObject = (JsonObject) mascotaResponseData.get(i).getAsJsonObject();//Obtiene un elemento objeto del array
             JsonObject userJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.USER); //obtiene el objeto usuario
-            String id = userJson.get(JsonKeys.USER_ID).getAsString(); //obtiene el id del usuario
+            int id = userJson.get(JsonKeys.USER_ID).getAsInt(); //obtiene el id del usuario
             String nombreCompleto = userJson.get(JsonKeys.USER_FULLNAME).getAsString(); //obtiene el nombre
 
             JsonObject imageJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.MEDIA_IMAGES);// otiene el objeto imagen del json

@@ -66,9 +66,9 @@ public class BaseDatos extends SQLiteOpenHelper {
             Mascota mascotaActual = new Mascota();
             mascotaActual.setId(registros.getInt(0));
             mascotaActual.setNombre(registros.getString(1));
-            mascotaActual.setFoto(registros.getInt(2));
+            mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
-            mascotaActual.setNumLinkes(registros.getInt(4));
+            mascotaActual.setLikes(registros.getInt(4));
 
             mascotas.add(mascotaActual);
         }
@@ -126,9 +126,9 @@ public class BaseDatos extends SQLiteOpenHelper {
             Mascota mascotaActual = new Mascota();
             mascotaActual.setId(registros.getInt(0));
             mascotaActual.setNombre(registros.getString(1));
-            mascotaActual.setFoto(registros.getInt(2));
+            mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
-            mascotaActual.setNumLinkes(registros.getInt(4));
+            mascotaActual.setLikes(registros.getInt(4));
 
             mascotas.add(mascotaActual);
         }
