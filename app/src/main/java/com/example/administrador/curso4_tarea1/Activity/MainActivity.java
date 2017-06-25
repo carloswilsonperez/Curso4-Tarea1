@@ -16,8 +16,8 @@ import android.widget.ImageView;
 
 import com.example.administrador.curso4_tarea1.R;
 import com.example.administrador.curso4_tarea1.adapter.PageAdapter;
-import com.example.administrador.curso4_tarea1.vista_fragment.HomeFragment;
-import com.example.administrador.curso4_tarea1.vista_fragment.PerfilFragment;
+import com.example.administrador.curso4_tarea1.vista_fragment.HomeFragmentView;
+import com.example.administrador.curso4_tarea1.vista_fragment.PerfilFragmentView;
 
 import java.util.ArrayList;
 
@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Fragment> agregarFragments(){
         ArrayList<Fragment> fragments = new ArrayList<>();
         // Cargo los fragments en el órden que los quiero mostrar
-        fragments.add(new HomeFragment());
-        fragments.add(new PerfilFragment());
+        fragments.add(new HomeFragmentView());
+        fragments.add(new PerfilFragmentView());
         return  fragments;
     }
 

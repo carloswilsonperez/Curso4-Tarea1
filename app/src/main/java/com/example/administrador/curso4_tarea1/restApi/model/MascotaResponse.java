@@ -17,6 +17,7 @@ public class MascotaResponse {
     }
 
     public void setMascotas(ArrayList<Mascota> mascotas) {
+
         this.mascotas = mascotas;
     }
 }

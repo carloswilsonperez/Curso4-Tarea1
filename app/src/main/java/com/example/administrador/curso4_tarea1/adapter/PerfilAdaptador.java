@@ -43,6 +43,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
     public void onBindViewHolder(final PerfilAdaptador.PerfilViewHolder mascotaViewHolder, int position){
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
+
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
  /*       Log.i(TAG, "La ruta la url es:"+ ruta);  */
         Picasso.with(activity) // Libreria para traer las fotos
@@ -55,7 +56,11 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
 
     @Override
     public int getItemCount(){
-        return mascotas.size();
+        if(mascotas == null){
+            return 0;
+        } else {
+            return mascotas.size();
+        }
     }
 
     //**********  Clase interna MascotaViewHolder *****************

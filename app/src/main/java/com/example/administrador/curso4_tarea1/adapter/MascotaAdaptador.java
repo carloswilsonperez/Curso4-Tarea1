@@ -2,6 +2,7 @@ package com.example.administrador.curso4_tarea1.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.example.administrador.curso4_tarea1.pojo.Mascota;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 
 /**
@@ -50,10 +53,14 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         final Mascota mascota = mascotas.get(position); //Obtiene todos los datos de la mascota en la posición position
         String ruta = mascota.getUrlFoto();
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
- /*       Log.i(TAG, "La ruta la url es:"+ ruta);  */
+
+        Log.i(TAG, "La ruta la url es:"+ ruta);
+/*
         Picasso.with(activity) // Libreria para traer las fotos
                 .load(ruta) // trae la foto del usuario
                 .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
+ */
+        mascotaViewHolder.imgFoto.setImageResource(parseInt(ruta));
         mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
         mascotaViewHolder.tvNombre.setText(mascota.getNombre()); // Seteo el cardView con la foto recibida del ArrayList
         mascotaViewHolder.llCardView.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo
@@ -73,7 +80,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
     @Override
     public int getItemCount(){
         if(mascotas == null){
-        return 0;
+            return 0;
         } else {
             return mascotas.size();
         }

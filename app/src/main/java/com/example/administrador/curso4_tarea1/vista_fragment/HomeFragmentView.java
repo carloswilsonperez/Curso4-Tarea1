@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by administrador on 17/05/17.
  */
 
-public class HomeFragment extends Fragment implements IHomeFragmentView {
+public class HomeFragmentView extends Fragment implements IHomeFragmentView {
 
     ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
