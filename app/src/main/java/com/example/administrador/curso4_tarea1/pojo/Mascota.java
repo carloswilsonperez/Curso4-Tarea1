@@ -6,7 +6,7 @@ package com.example.administrador.curso4_tarea1.pojo;
 
 public class Mascota {
 
-    private int id;
+    private String id;
     private String nombre;
     private int Likes;
     private String urlFoto;
@@ -25,11 +25,11 @@ public class Mascota {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -14,7 +14,9 @@ public final class ConstantesRestApi {
     public static String usuario;
 
 
-    // Petición para traer todas las imágenes del usuario https://api.instagram.com/v1/users/self/media/recent/?access_token=5557323253.5477f1a.a6c8d1cf0f9747fe91b9c884bc63fcc4
+    // Petición para traer todas las imágenes del usuario
+    // https://api.instagram.com/v1/users/self/media/recent/?access_token=5557323253.5477f1a.a6c8d1cf0f9747fe91b9c884bc63fcc4
+    // https://api.instagram.com/v1/users/self/media/recent/?access_token=5557323253.5477f1a.a6c8d1cf0f9747fe91b9c884bc63fcc4
     public static final String URL_GET_RECENT_MEDIA_USER = ROOT_URL + KEY_GET_RECENT_MEDIA_USER + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
     /* GET PARA BUSCAR LOS USUARIOS POR NOMBRE

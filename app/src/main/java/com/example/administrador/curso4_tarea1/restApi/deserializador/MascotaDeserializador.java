@@ -1,5 +1,7 @@
 package com.example.administrador.curso4_tarea1.restApi.deserializador;
 
+import android.util.Log;
+
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
 import com.example.administrador.curso4_tarea1.restApi.model.JsonKeys;
 import com.example.administrador.curso4_tarea1.restApi.model.MascotaResponse;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 //Clase para deserializar los datos y llevarlos a la forma de la clase del modelo ContactoResponse
 public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
 
+    private static final String TAG = "DepuraDeserializador";
+
     @Override
     public MascotaResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         Gson gson = new Gson();
@@ -37,9 +41,10 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
 
         for (int i = 0; i < mascotaResponseData.size(); i++) {
             JsonObject mascotaResponseDataObject = (JsonObject) mascotaResponseData.get(i).getAsJsonObject();//Obtiene un elemento objeto del array
-            JsonObject userJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.USER); //obtiene el objeto usuario
-            int id = userJson.get(JsonKeys.USER_ID).getAsInt(); //obtiene el id del usuario
-            String nombreCompleto = userJson.get(JsonKeys.USER_FULLNAME).getAsString(); //obtiene el nombre
+            JsonObject usuarioJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.USER); //obtiene el objeto usuario
+            String id = usuarioJson.get(JsonKeys.USER_ID).getAsString(); //obtiene el id del usuario
+            Log.d(TAG, "el valor del id es-> " + id);
+            String nombreCompleto = usuarioJson.get(JsonKeys.USER_FULLNAME).getAsString(); //obtiene el nombre
 
             JsonObject imageJson = mascotaResponseDataObject.getAsJsonObject(JsonKeys.MEDIA_IMAGES);// otiene el objeto imagen del json
             JsonObject stdResolutionJson = imageJson.getAsJsonObject(JsonKeys.MEDIA_STANDARD_RESOLUTION); // obtiene el objeto resolucion que dentro de imgen

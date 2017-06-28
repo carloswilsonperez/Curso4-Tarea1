@@ -22,9 +22,10 @@
 
         <ImageView
             android:id="@+id/imgFoto"
-            android:layout_width="110dp"
-            android:layout_height="90dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:contentDescription="Mi mascota"
+            android:layout_margin="3dp"
             app:srcCompat="@drawable/perro01"
             tools:ignore="ContentDescription,HardcodedText" />
 

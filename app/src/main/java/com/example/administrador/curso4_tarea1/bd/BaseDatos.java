@@ -64,7 +64,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         while (registros.moveToNext()){
             Mascota mascotaActual = new Mascota();
-            mascotaActual.setId(registros.getInt(0));
+            mascotaActual.setId(registros.getString(0));
             mascotaActual.setNombre(registros.getString(1));
             mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
@@ -85,7 +85,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
 
     // Método para insertar 1 like a una mascota
-    public void insertarLikeMascota(ContentValues contentValues, int id){
+    public void insertarLikeMascota(ContentValues contentValues, String id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.update(ConstantesDB.TABLE_MASCOTA, contentValues, "id="+id, null);
         db.close();
@@ -124,7 +124,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         while (registros.moveToNext()){
             Mascota mascotaActual = new Mascota();
-            mascotaActual.setId(registros.getInt(0));
+            mascotaActual.setId(registros.getString(0));
             mascotaActual.setNombre(registros.getString(1));
             mascotaActual.setUrlFoto(registros.getString(2));
             mascotaActual.setColorFondo(registros.getInt(3));
