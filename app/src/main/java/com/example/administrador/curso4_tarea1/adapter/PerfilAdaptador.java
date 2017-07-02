@@ -47,7 +47,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Perfil
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
  /*       Log.i(TAG, "La ruta la url es:"+ ruta);  */
         Picasso.with(activity) // Libreria para traer las fotos
-                .load(ruta) // trae la foto del usuario
+                .load(ruta) // trae la foto del usuarioApi
                 .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
         mascotaViewHolder.tvNumLikes.setText(Integer.toString(mascota.getLikes()));// Seteo el Número de likes del cardView
         mascotaViewHolder.llCardViewPerfil.setBackgroundResource(mascota.getColorFondo()); // Establece el color de fondo

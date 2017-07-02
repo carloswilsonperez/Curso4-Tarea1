@@ -3,6 +3,8 @@ package com.example.administrador.curso4_tarea1.vista_fragment;
 import com.example.administrador.curso4_tarea1.adapter.MascotaAdaptador;
 import com.example.administrador.curso4_tarea1.adapter.PerfilAdaptador;
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
+import com.example.administrador.curso4_tarea1.pojo.Perfil;
+
 import java.util.ArrayList;
 
 /**
@@ -16,4 +18,6 @@ public interface IPerfilFragmentView {
     public PerfilAdaptador crearAdaptador(ArrayList<Mascota> mascotas);
 
     public void inicializarAdaptadorRV(PerfilAdaptador adaptador);
+
+    public void mostrarPerfil(Perfil perfils);
 }

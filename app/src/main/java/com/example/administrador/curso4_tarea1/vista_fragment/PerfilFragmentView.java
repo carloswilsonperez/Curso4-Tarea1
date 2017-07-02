@@ -13,6 +13,7 @@ import com.example.administrador.curso4_tarea1.R;
 import com.example.administrador.curso4_tarea1.adapter.MascotaAdaptador;
 import com.example.administrador.curso4_tarea1.adapter.PerfilAdaptador;
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
+import com.example.administrador.curso4_tarea1.pojo.Perfil;
 import com.example.administrador.curso4_tarea1.presentador.IPerfilFragmentPresenter;
 import com.example.administrador.curso4_tarea1.presentador.PerfilFragmentPresenter;
 
@@ -72,5 +73,10 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
     @Override // Le indicamos al RecyclerView el adaptador que debe usar
     public void inicializarAdaptadorRV(PerfilAdaptador adaptador) {
         rvPerfiles.setAdapter(adaptador);
+    }
+
+    @Override
+    public void mostrarPerfil(Perfil perfils) {
+
     }
 }

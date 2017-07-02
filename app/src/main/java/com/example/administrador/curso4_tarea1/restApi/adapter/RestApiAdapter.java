@@ -3,7 +3,9 @@ package com.example.administrador.curso4_tarea1.restApi.adapter;
 import com.example.administrador.curso4_tarea1.restApi.ConstantesRestApi;
 import com.example.administrador.curso4_tarea1.restApi.EndpointsApi;
 import com.example.administrador.curso4_tarea1.restApi.deserializador.MascotaDeserializador;
+import com.example.administrador.curso4_tarea1.restApi.deserializador.PerfilDeserializador;
 import com.example.administrador.curso4_tarea1.restApi.model.MascotaResponse;
+import com.example.administrador.curso4_tarea1.restApi.model.PerfilResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
@@ -24,12 +26,18 @@ public class RestApiAdapter {
         return retrofit.create(EndpointsApi.class);
     }
 
-    //Creo un metodo porque la clase contacto debe coincidir con contactoDesearializador
-    // Por cada tipo de consulta a la api hay que hacer un metodo deserializador para ese tipo de llamada
+    // Aqui es donde se debe asociar cada Modelo de response con su correspondiente deserializador
     public Gson construyeGsonDeserializadorMediaRecent(){
         //objeto que sirve para que lo que se desearialize se lo asocie con el objeto Mascota
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(MascotaResponse.class, new MascotaDeserializador()); // define la asociación
+        return  gsonBuilder.create();  // retorna el Gson con la asociacion creada
+    }
+
+    public Gson construyeGesonDeserializadorPerfil(){
+        //objeto que sirve para que lo que se desearializen los datos del perfil de usuario
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(PerfilResponse.class, new PerfilDeserializador()); // define la asociación
         return  gsonBuilder.create();  // retorna el Gson con la asociacion creada
     }
 }

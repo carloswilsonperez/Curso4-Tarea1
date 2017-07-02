@@ -24,10 +24,10 @@
     <string name="aviso_mail_enviado">Correo enviado con éxito a:  </string>
     <string name="aviso_faltan_datos">Faltan datos </string>
     <string name="mi_mascota">Yaman</string>
-    <string name="et_usuario_sandbox">Escribe tu usuario</string>
+    <string name="et_usuario_sandbox">Escribe tu usuarioApi</string>
     <string name="btn_guardar_cuenta">Guardar Cuenta</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titulo_acercade">Acerca de mi</string>
+
 </resources>

@@ -57,7 +57,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         Log.i(TAG, "La ruta la url es:"+ ruta);
 /*
         Picasso.with(activity) // Libreria para traer las fotos
-                .load(ruta) // trae la foto del usuario
+                .load(ruta) // trae la foto del usuarioApi
                 .into(mascotaViewHolder.imgFoto); // ImagenView dode se va a mostrar la foto
  */
         mascotaViewHolder.imgFoto.setImageResource(parseInt(ruta));

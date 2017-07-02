@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by administrador on 19/06/17.
  */
-// Clase para manejar la respuesta de la API de Instagram
+// Clase para manejar la respuesta con las mascotas de la API de Instagram
 public class MascotaResponse {
 
     ArrayList<Mascota> mascotas;
