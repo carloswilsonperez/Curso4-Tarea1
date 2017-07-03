@@ -19,5 +19,5 @@ public interface IPerfilFragmentView {
 
     public void inicializarAdaptadorRV(PerfilAdaptador adaptador);
 
-    public void mostrarPerfil(Perfil perfils);
+    public void mostrarPerfil(ArrayList<Perfil> perfiles);
 }

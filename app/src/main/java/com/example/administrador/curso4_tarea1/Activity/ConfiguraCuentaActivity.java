@@ -46,14 +46,7 @@ public class ConfiguraCuentaActivity extends AppCompatActivity {
                 DatosPerfil datosPerfil = new DatosPerfil(getApplicationContext());
                 String nombreSandbox = etNombreSandbox.getText().toString(); //obtengo el contenido del EditText
                 if(nombreSandbox != null && !nombreSandbox.isEmpty()){
-                    // creo un objeto MisDatos.xml para la presistencia de las preferencias guardadas
-                   /* SharedPreferences miPreferecia = getSharedPreferences("MisDatos", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = miPreferecia.edit(); //Creo el editor para manejar el archivo MisDatos.xml
-                    editor.putString("nombreSandbox", nombreSandbox); //Seteo el valor a guardar en el xml
-                    editor.commit(); //guarda el nombre del usuarioApi sandbox utilizado para api de instagram*/
-
-                   datosPerfil.setIdUsuarioApi(nombreSandbox); // Guarda el usuario ingresado en el xml
-
+                    datosPerfil.setIdUsuarioApi(nombreSandbox); // Guarda el usuario ingresado en el xml
                     String nombre= datosPerfil.getUsuarioApi();
                     Toast.makeText(ConfiguraCuentaActivity.this, "La cuenta de usuarioApi \'"+ nombre+ "\' ha sido guardada.", Toast.LENGTH_LONG).show();
                     etNombreSandbox.setText("");

@@ -5,9 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
+import com.example.administrador.curso4_tarea1.pojo.Perfil;
 import com.example.administrador.curso4_tarea1.restApi.EndpointsApi;
 import com.example.administrador.curso4_tarea1.restApi.adapter.RestApiAdapter;
 import com.example.administrador.curso4_tarea1.restApi.model.MascotaResponse;
+import com.example.administrador.curso4_tarea1.restApi.model.PerfilResponse;
 import com.example.administrador.curso4_tarea1.vista_fragment.IPerfilFragmentView;
 import com.google.gson.Gson;
 
@@ -27,11 +29,13 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     private Context context;
     private IPerfilFragmentView iPerfilFragmentView;
     private ArrayList<Mascota> mascotas;
+    private ArrayList<Perfil> perfiles;
 
     //El contructor recibe un instacia del la Iterface de la vista y el contexto
     public PerfilFragmentPresenter(IPerfilFragmentView iPerfilFragmentView, Context context) {
         this.iPerfilFragmentView = iPerfilFragmentView;
         this.context = context;
+        obtenerPerfil();
         obtenerMediosRecientes();
     }
 
@@ -66,24 +70,22 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         iPerfilFragmentView.generarGridLayout();// Luego se debe indicar que genere el GridLayout
     }
 
-    @Override
+    @Override // Aqui comienza el llamdo para obtener el perfil de la api de instagram
     public void obtenerPerfil() {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
-        Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent(); //primero el adaptador construye el Gson y luego lo recibe el metodo establecerConexionRestApiInstagram
-        //Creo un objeto EndpointsApi utilizando la instancia del RestApiAdapter y el metodo establecerConexionRestApiInstagram()
-        // el cual devuelve un objeto de tipo EndpointsApi ya con la url-base cargada y esperando una petición a ejecutar
-        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia();  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
-        mascotaResponseCall.enqueue(new Callback<MascotaResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
+        Gson gsonPerfil = restApiAdapter.construyeGesonDeserializadorPerfil();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonPerfil);
+        Call<PerfilResponse> perfilResponseCall = endpointsApi.getPerfil();  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
+        perfilResponseCall.enqueue(new Callback<PerfilResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
             @Override // Si la conexión es exitosa:
-            public void onResponse(Call<MascotaResponse> call, Response<MascotaResponse> response) {
-                MascotaResponse mascotaResponse = response.body(); //obtiene solo la data del objeto json recibido
-                mascotas = mascotaResponse.getMascotas();// guarda el ArrayList de mascotas
-                mostrarMediosRecientesRv();
+            public void onResponse(Call<PerfilResponse> call, Response<PerfilResponse> response) {
+                PerfilResponse perfilResponse = response.body(); //obtiene solo la data del objeto json recibido
+                perfiles = perfilResponse.getPerfil();// guarda el ArrayList con el perfil
+                mostrarPerfil();
             }
             @Override // Si la conexión falla:
-            public void onFailure(Call<MascotaResponse> call, Throwable t) {
-                Toast.makeText(context, "¡Algo pasó en la conexión! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
+            public void onFailure(Call<PerfilResponse> call, Throwable t) {
+                Toast.makeText(context, "¡Algo pasó en la conexión al obtener el perfil! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
                 // log para el programador
                 Log.e(TAG, t.toString());
             }
@@ -92,6 +94,6 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
 
     @Override
     public void mostrarPerfil() {
-
+        iPerfilFragmentView.mostrarPerfil(perfiles);
     }
 }

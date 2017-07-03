@@ -28,7 +28,7 @@ public class MascotaDeserializador implements JsonDeserializer<MascotaResponse>{
     public MascotaResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         Gson gson = new Gson();
         MascotaResponse mascotaResponse = gson.fromJson(json, MascotaResponse.class);//
-        JsonArray mascotaResponseData = json.getAsJsonObject().getAsJsonArray(JsonKeys.MEDIA_RESPONCE_ARRAY);//Obtengo el array data del json
+        JsonArray mascotaResponseData = json.getAsJsonObject().getAsJsonArray(JsonKeys.DATA_RESPONCE_ARRAY);//Obtengo el array data del json
         mascotaResponse.setMascotas(deserealizarMascotaDeJson(mascotaResponseData));//llama al metodo contiguo para deserializar
         return mascotaResponse; // Devuelve un objteto con de tipo response con la respuesta
     }

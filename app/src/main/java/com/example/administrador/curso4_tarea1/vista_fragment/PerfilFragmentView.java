@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import com.example.administrador.curso4_tarea1.R;
 import com.example.administrador.curso4_tarea1.adapter.MascotaAdaptador;
 import com.example.administrador.curso4_tarea1.adapter.PerfilAdaptador;
@@ -16,6 +18,8 @@ import com.example.administrador.curso4_tarea1.pojo.Mascota;
 import com.example.administrador.curso4_tarea1.pojo.Perfil;
 import com.example.administrador.curso4_tarea1.presentador.IPerfilFragmentPresenter;
 import com.example.administrador.curso4_tarea1.presentador.PerfilFragmentPresenter;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -25,10 +29,13 @@ import java.util.ArrayList;
 public class PerfilFragmentView extends Fragment implements IPerfilFragmentView {
 
     ArrayList<Mascota> mascotas;
+    ArrayList<Perfil> perfiles;
     private RecyclerView rvPerfiles;
     private IPerfilFragmentPresenter presenter;
     private static final String KEY_EXTRA_URL = "url";
     private static final String KEY_EXTRA_LIKE = "like";
+    private CircularImageView imgFotoCircular;
+    private TextView tvNombrePerfil;
 
     // Primero hay que sobreescribir el método onCreateView
     @Nullable
@@ -36,6 +43,8 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_perfil , container, false);
+        imgFotoCircular = (CircularImageView) v.findViewById(R.id.imgFotoCirular);
+        tvNombrePerfil = (TextView) v.findViewById(R.id.tvNombrePerfil);
         rvPerfiles = (RecyclerView) v.findViewById(R.id.rvPerfil);
         presenter = new PerfilFragmentPresenter(this, getContext());
         return v;
@@ -75,8 +84,14 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
         rvPerfiles.setAdapter(adaptador);
     }
 
-    @Override
-    public void mostrarPerfil(Perfil perfils) {
-
+    @Override // Muestra los datos del perfil en el PerfilFragment
+    public void mostrarPerfil(ArrayList<Perfil> perfiles) {
+        String nombrePerfil = perfiles.get(0).getNombreUsuario(); // obtiene el nombre de Usuario
+        tvNombrePerfil.setText(nombrePerfil); //Setea el nombre de usuario
+        String ruta = perfiles.get(0).getUrlFotoPerfil(); // Obtiene la ruta de la foto de perfil
+        ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
+        Picasso.with(getActivity()) // Libreria para traer las fotos
+                .load(ruta) // trae la foto del perfil de usuario
+                .into(imgFotoCircular); // donde se va a mostrar la foto
     }
 }

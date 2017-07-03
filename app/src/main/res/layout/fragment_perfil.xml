@@ -38,6 +38,7 @@
                 app:civ_shadow_radius="10" />
 
             <TextView
+                android:id="@+id/tvNombrePerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mi_mascota"
