@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import com.example.administrador.curso4_tarea1.pojo.Mascota;
 import com.example.administrador.curso4_tarea1.pojo.Perfil;
+import com.example.administrador.curso4_tarea1.restApi.ConstantesRestApi;
+import com.example.administrador.curso4_tarea1.restApi.DatosPerfil;
 import com.example.administrador.curso4_tarea1.restApi.EndpointsApi;
 import com.example.administrador.curso4_tarea1.restApi.adapter.RestApiAdapter;
 import com.example.administrador.curso4_tarea1.restApi.model.MascotaResponse;
@@ -30,11 +32,13 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     private IPerfilFragmentView iPerfilFragmentView;
     private ArrayList<Mascota> mascotas;
     private ArrayList<Perfil> perfiles;
+    DatosPerfil datosPerfil;
 
     //El contructor recibe un instacia del la Iterface de la vista y el contexto
     public PerfilFragmentPresenter(IPerfilFragmentView iPerfilFragmentView, Context context) {
         this.iPerfilFragmentView = iPerfilFragmentView;
         this.context = context;
+        datosPerfil = new DatosPerfil(context);
         obtenerPerfil();
         obtenerMediosRecientes();
     }
@@ -46,7 +50,12 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         //Creo un objeto EndpointsApi utilizando la instancia del RestApiAdapter y el metodo establecerConexionRestApiInstagram()
         // el cual devuelve un objeto de tipo EndpointsApi ya con la url-base cargada y esperando una petición a ejecutar
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia();  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
+        // Obtengo el id del usuario
+    //    DatosPerfil datosPerfil = new DatosPerfil(context);
+        String id=datosPerfil.getIdUsuarioApi()+"/media/recent/";
+        String token = ConstantesRestApi.ACCESS_TOKEN;
+
+        Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia(id, token);  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
         mascotaResponseCall.enqueue(new Callback<MascotaResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
             @Override // Si la conexión es exitosa:
             public void onResponse(Call<MascotaResponse> call, Response<MascotaResponse> response) {
@@ -75,7 +84,10 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonPerfil = restApiAdapter.construyeGesonDeserializadorPerfil();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonPerfil);
-        Call<PerfilResponse> perfilResponseCall = endpointsApi.getPerfil();  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
+        //Obtengo el perfil actual
+
+        String nombre = datosPerfil.getUsuarioApi();
+        Call<PerfilResponse> perfilResponseCall = endpointsApi.getPerfil(nombre, ConstantesRestApi.ACCESS_TOKEN);  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
         perfilResponseCall.enqueue(new Callback<PerfilResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
             @Override // Si la conexión es exitosa:
             public void onResponse(Call<PerfilResponse> call, Response<PerfilResponse> response) {
