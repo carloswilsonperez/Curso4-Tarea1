@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mConfigurarCuenta:
                 Intent intent3 = new Intent(this, ConfiguraCuentaActivity.class);
                 startActivity(intent3);
+
                 break;
         }
         return super.onOptionsItemSelected(item);

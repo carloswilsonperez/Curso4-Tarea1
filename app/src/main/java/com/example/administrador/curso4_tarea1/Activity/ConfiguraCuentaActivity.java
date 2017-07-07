@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrador.curso4_tarea1.R;
+import com.example.administrador.curso4_tarea1.presentador.PerfilFragmentPresenter;
 import com.example.administrador.curso4_tarea1.restApi.DatosPerfil;
 
 /**
@@ -37,6 +38,8 @@ public class ConfiguraCuentaActivity extends AppCompatActivity {
         if (toolbar!=null){
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false); // Oculta el titulo del ToolBar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);   // boton para atras
+
         }
         //********** Al presionar el botón "Guardar Cuenta" **********
         btnGuardarCuenta.setOnClickListener(new View.OnClickListener() {
@@ -44,16 +47,21 @@ public class ConfiguraCuentaActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 DatosPerfil datosPerfil = new DatosPerfil(getApplicationContext());
+
                 String nombreSandbox = etNombreSandbox.getText().toString(); //obtengo el contenido del EditText
                 if(nombreSandbox != null && !nombreSandbox.isEmpty()){
-                    datosPerfil.setIdUsuarioApi(nombreSandbox); // Guarda el usuario ingresado en el xml
+                    datosPerfil.setUsuarioApi(nombreSandbox); // Guarda el usuario ingresado en el xml
                     String nombre= datosPerfil.getUsuarioApi();
-                    Toast.makeText(ConfiguraCuentaActivity.this, "La cuenta de usuarioApi \'"+ nombre+ "\' ha sido guardada.", Toast.LENGTH_LONG).show();
-                    etNombreSandbox.setText("");
+                    Toast.makeText(ConfiguraCuentaActivity.this, "La cuenta de usuario \'"+ nombre+ "\' ha sido guardada.", Toast.LENGTH_LONG).show();
+                    etNombreSandbox.setText(""); //borra el contenido del EditText
+
+
                 }else {
 
                     Toast.makeText(ConfiguraCuentaActivity.this, "No hay ningún nombre para guardar", Toast.LENGTH_LONG).show();
                 }
+
+
 
             }
         });

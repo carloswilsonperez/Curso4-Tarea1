@@ -38,6 +38,5 @@ public class DatosPerfil {
 
     public void setIdUsuarioApi(String idUsuarioApi) {
         this.idUsuarioApi = idUsuarioApi;
-
     }
 }

@@ -22,7 +22,6 @@
         <activity
             android:name="com.example.administrador.curso4_tarea1.Activity.Activity2"
             android:parentActivityName="com.example.administrador.curso4_tarea1.Activity.MainActivity">
-
             <!-- Soporte para versiones 4.0 o menores -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +33,13 @@
             android:label="@string/title_activity_acercade"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.example.administrador.curso4_tarea1.Activity.ConfiguraCuentaActivity"/>
+            android:name="com.example.administrador.curso4_tarea1.Activity.ConfiguraCuentaActivity"
+            android:parentActivityName="com.example.administrador.curso4_tarea1.Activity.MainActivity">
+            <!-- Soporte para versiones 4.0 o menores -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrador.curso4_tarea1.Activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
