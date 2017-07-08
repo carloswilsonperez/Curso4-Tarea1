@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout   = (TabLayout)findViewById(R.id.tabLayout);
         viewPager   = (ViewPager) findViewById(R.id.viewPager);
 
-        setUpViewPager();
+        setUpViewPager(); //Activa los fragments
 
         if (toolbar!=null){
             setSupportActionBar(toolbar);
@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpViewPager(); //Activa los fragments
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
