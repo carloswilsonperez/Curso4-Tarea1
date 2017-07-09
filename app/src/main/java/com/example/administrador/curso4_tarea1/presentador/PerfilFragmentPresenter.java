@@ -1,6 +1,7 @@
 package com.example.administrador.curso4_tarea1.presentador;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     String usuario;
     String idUsuario;
     DatosPerfil datosPerfil;
+    Handler handler = new Handler();
 
     //El contructor recibe un instacia del la Iterface de la vista y el contexto
     public PerfilFragmentPresenter(IPerfilFragmentView iPerfilFragmentView, Context context) {
@@ -44,8 +46,15 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         //Obtengo el perfil actual
         usuario = datosPerfil.getUsuarioApi();
         obtenerPerfil(usuario);
-        String id = getIdUsuario();
-        obtenerMediosRecientes(id);
+        idUsuario = getIdUsuario();
+        // Para traer los medios recientes le doy un delay de 1 segundo, para poder obtener el id primero
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                obtenerMediosRecientes(idUsuario);
+            }
+        }, 1000);
+
     }
 
     @Override
@@ -58,17 +67,6 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
         return idUsuario;
     }
 
-    /*
-        // ****************** Constructor agregado *******************************
-            public PerfilFragmentPresenter(Context context){
-                this.context = context;
-                datosPerfil = new DatosPerfil(context);
-                //Obtengo el perfil actual
-                usuario = datosPerfil.getUsuarioApi();
-                obtenerPerfil(usuario);
-            }
-        //**************************************************************************
-        */
     @Override
     public void obtenerMediosRecientes(String idUsuario) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
@@ -80,7 +78,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
     //    DatosPerfil datosPerfil = new DatosPerfil(context);
   //      String id=datosPerfil.getIdUsuarioApi()+"/media/recent/";
         String token = ConstantesRestApi.ACCESS_TOKEN;
-
+        String ruta = "users/"+idUsuario+"/media/recent/";
         Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia(idUsuario, token);  // El metodo getRecentMedia realiza la petición y lo guarda en el objeto Call de la clase Retrofit
         mascotaResponseCall.enqueue(new Callback<MascotaResponse>() { //Metodo para controlar el resultado de la respuesta, si trae datos o no
             @Override // Si la conexión es exitosa:
@@ -91,7 +89,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
             }
             @Override // Si la conexión falla:
             public void onFailure(Call<MascotaResponse> call, Throwable t) {
-                Toast.makeText(context, "¡Algo pasó en la conexión! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
+                Toast.makeText(context, "¡Algo pasó en la descarga de medios recientes! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
                 // log para el programador
                 Log.e(TAG, t.toString());
             }
@@ -123,7 +121,7 @@ public class PerfilFragmentPresenter implements IPerfilFragmentPresenter{
             }
             @Override // Si la conexión falla:
             public void onFailure(Call<PerfilResponse> call, Throwable t) {
-                Toast.makeText(context, "¡Algo pasó en la conexión al obtener el perfil! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
+                Toast.makeText(context, "¡Algo pasó al obtener el perfil! Intenta de nuevo", Toast.LENGTH_LONG).show();//Mensaje para el usuarioApi
                 // log para el programador
                 Log.e(TAG, t.toString());
             }
