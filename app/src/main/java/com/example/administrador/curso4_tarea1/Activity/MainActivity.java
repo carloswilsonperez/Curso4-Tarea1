@@ -16,6 +16,8 @@ import android.widget.ImageView;
 
 import com.example.administrador.curso4_tarea1.R;
 import com.example.administrador.curso4_tarea1.adapter.PageAdapter;
+import com.example.administrador.curso4_tarea1.restApi.ConstantesRestApi;
+import com.example.administrador.curso4_tarea1.restApi.DatosPreferencias;
 import com.example.administrador.curso4_tarea1.vista_fragment.HomeFragmentView;
 import com.example.administrador.curso4_tarea1.vista_fragment.PerfilFragmentView;
 
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    DatosPreferencias datosPreferencias;
+    String usuario;
+    String idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout   = (TabLayout)findViewById(R.id.tabLayout);
         viewPager   = (ViewPager) findViewById(R.id.viewPager);
 
-        setUpViewPager(); //Activa los fragments
+   //     setUpViewPager(); //Activa los fragments
 
         if (toolbar!=null){
             setSupportActionBar(toolbar);
@@ -53,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // Verifica si hay un perfil guardado y si no hay le asigna el perfil por defecto
+        datosPreferencias = new DatosPreferencias(this);
+        usuario = datosPreferencias.getUsuarioApi();
+        idUsuario = datosPreferencias.getIdUsuarioApi();
+        if(usuario.isEmpty() || idUsuario.isEmpty()){
+            datosPreferencias.setUsuarioApi(ConstantesRestApi.MI_USUARIO_SANDBOX);
+            datosPreferencias.setIdUsuarioApi(ConstantesRestApi.MI_ID_USUARIO_SANDBOX);
+        }
+
     }
 
     @Override

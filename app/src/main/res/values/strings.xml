@@ -14,7 +14,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_mensaje">Escribe tu mensaje aquí</string>
     <string name="titulo_formulario">Formulario de contacto</string>
-    <string name="title_activity_acercade">AcercadeActivity</string>
+    <string name="title_activity_acercade">Acerca de mi</string>
     <string name="btn_enviar">Enviar comentario</string>
     <string name="tv_acercade_estudios">Estudios cursados: Escuela Primaria de Springfield, Preparatoria de Springfield </string>
     <string name="tv_acercade_nombre">Nombre completo: Homer Jay Simpson</string>
@@ -24,7 +24,7 @@
     <string name="aviso_mail_enviado">Correo enviado con éxito a:  </string>
     <string name="aviso_faltan_datos">Faltan datos </string>
     <string name="mi_mascota">Yaman</string>
-    <string name="et_usuario_sandbox">Escribe tu usuarioApi</string>
+    <string name="et_usuario_sandbox">Escribe un usuario</string>
     <string name="btn_guardar_cuenta">Guardar Cuenta</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

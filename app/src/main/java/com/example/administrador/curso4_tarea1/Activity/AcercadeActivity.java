@@ -13,7 +13,12 @@ public class AcercadeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acercade);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        
+        if (toolbar!=null){
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false); // Oculta el titulo del ToolBar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);   // boton para atras
+        }
 
 
     }

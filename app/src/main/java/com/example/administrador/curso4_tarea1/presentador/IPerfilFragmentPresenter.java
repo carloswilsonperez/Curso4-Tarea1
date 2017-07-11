@@ -10,15 +10,15 @@ import java.util.ArrayList;
 
 public interface IPerfilFragmentPresenter {
 
-    public void obtenerMediosRecientes(String idUsuario);
+    public void obtenerMediosRecientes();
 
     public void mostrarMediosRecientesRv();
 
-    public void obtenerPerfil(String usuario);
+    public void obtenerPerfil();
 
-    public void setIdUsario(String id);
+    public void obtenerIdPerfil(String usuario);
 
-    public String getIdUsuario();
+    public void enviarIdPerfil();
 
     public void mostrarPerfil();
 }

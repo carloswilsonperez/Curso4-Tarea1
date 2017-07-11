@@ -105,7 +105,7 @@ public class ConstructorMascotas {
     public void darLikeMascota(Mascota mascota){
 
         Integer likes = obtenerLikesMascota(mascota); // Obtengo los likes que tiene la mascota
-       // likes=likes+1;
+        likes=likes+1;
         BaseDatos db = new BaseDatos(context);
         ContentValues contentValues = new ContentValues();
         contentValues.put(ConstantesDB.TABLE_MASCOTA_LIKES, likes);

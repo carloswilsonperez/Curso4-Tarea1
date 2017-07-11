@@ -35,9 +35,11 @@ public class RestApiAdapter {
     }
 
     public Gson construyeGesonDeserializadorPerfil(){
-        //objeto que sirve para que lo que se desearializen los datos del perfil de usuario
+        //objeto que sirve para que se desearializen los datos del perfil de usuario
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(PerfilResponse.class, new PerfilDeserializador()); // define la asociación
         return  gsonBuilder.create();  // retorna el Gson con la asociacion creada
     }
+
+
 }

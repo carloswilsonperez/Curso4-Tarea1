@@ -21,8 +21,8 @@ public interface EndpointsApi {
     Call<MascotaResponse> getRecentMedia(@Path("id") String id, @Query("access_token") String token); //Retrofit necesita usar la clase Call
 
     /* GET PARA BUSCAR LOS USUARIOS POR NOMBRE, a partir de ahi podemos obtener el id y luego hacer mas consultas
-    https://api.instagram.com/v1/users/search?q=jarrieta31&access_token=5557323253.5477f1a.a6c8d1cf0f9747fe91b9c884bc63fcc4   */
+    https://api.instagram.com/v1/users/search?q=supermascota5&access_token=5557323253.5477f1a.a6c8d1cf0f9747fe91b9c884bc63fcc4   */
     @GET("users/search") //
-    Call<PerfilResponse> getPerfil(@Query("q") String nombre, @Query("access_token") String token);
+    Call<PerfilResponse> getPerfil(@Query("q") String usuario, @Query("access_token") String token);
 
 }

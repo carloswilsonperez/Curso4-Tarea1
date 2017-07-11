@@ -7,20 +7,20 @@ import android.content.SharedPreferences;
  * Created by administrador on 28/06/17.
  */
 
-public class DatosPerfil {
+public class DatosPreferencias {
 
     private String usuarioApi;
     private String idUsuarioApi;
     private Context context;
     SharedPreferences miPreferencia;
 
-    public DatosPerfil(Context context) {
+    public DatosPreferencias(Context context) {
         this.context = context;
         miPreferencia = context.getSharedPreferences(ConstantesRestApi.MI_SHARED_PREFERENCES, Context.MODE_PRIVATE);
     }
 
     public String getUsuarioApi() { // obtiene el nombre de usuario, y si no existe coloca el usuario por default "supermascota5"
-        usuarioApi = miPreferencia.getString(ConstantesRestApi.key_USUARIO_API, ConstantesRestApi.MI_USUARIO_SANDBOX);
+        usuarioApi = miPreferencia.getString(ConstantesRestApi.key_USUARIO_API, "");
         return usuarioApi;
     }
 
@@ -32,11 +32,14 @@ public class DatosPerfil {
     }
 
     public String getIdUsuarioApi() { // obtiene el id de usuario, y si no existe coloca el id del usuario por default "supermascota5"
-        idUsuarioApi = miPreferencia.getString(ConstantesRestApi.key_ID_USUARIO_API, ConstantesRestApi.MI_ID_USUARIO_SANDBOX);
+        idUsuarioApi = miPreferencia.getString(ConstantesRestApi.key_ID_USUARIO_API, "");
         return idUsuarioApi;
     }
 
     public void setIdUsuarioApi(String idUsuarioApi) {
         this.idUsuarioApi = idUsuarioApi;
+        SharedPreferences.Editor editor = miPreferencia.edit();
+        editor.putString(ConstantesRestApi.key_ID_USUARIO_API, idUsuarioApi);
+        editor.commit();
     }
 }

@@ -92,6 +92,8 @@ public class PerfilFragmentView extends Fragment implements IPerfilFragmentView 
         ruta = ruta.replaceAll("\"", ""); //Quito las comillas dobles que vienen con la url desde el json
         Picasso.with(getActivity()) // Libreria para traer las fotos
                 .load(ruta) // trae la foto del perfil de usuario
+                .resize(200,180)
+                .centerCrop()
                 .into(imgFotoCircular); // donde se va a mostrar la foto
     }
 }

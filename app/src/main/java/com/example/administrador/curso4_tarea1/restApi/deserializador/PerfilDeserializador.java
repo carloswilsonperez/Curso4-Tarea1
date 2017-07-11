@@ -31,20 +31,13 @@ public class PerfilDeserializador implements JsonDeserializer<PerfilResponse>{
         return perfilResponse; // Devuelve un objeteto de tipo PerfilResponse con la respuesta
     }
 
-
-
     public ArrayList<Perfil> deserealizarPerfilDeJson(JsonArray perfilResponseData){
         ArrayList<Perfil> perfiles = new ArrayList<>();
         for (int i = 0; i < perfilResponseData.size(); i++) {
             JsonObject perfilResponseDataObject = (JsonObject) perfilResponseData.get(i).getAsJsonObject();//Obtiene un elemento objeto del array
-
             String idUsuario = perfilResponseDataObject.get(JsonKeys.USER_ID).getAsString(); //obtiene el id del perfil de usuario
-            Log.d(TAG, "el valor del id es-> " + idUsuario);
-
             String nombreUsuario = perfilResponseDataObject.get(JsonKeys.USER_NAME).getAsString(); //obtiene el nombre de usuario
-
             String nombreCompleto = perfilResponseDataObject.get(JsonKeys.USER_FULLNAME).getAsString(); //obtiene el nombre
-
             String urlFotoPerfil = perfilResponseDataObject.get(JsonKeys.PROFILE_PICTURE).toString(); //Obtiene la url de la foto de perfil
 
             // Lleno los datos del usuarioApi actual
@@ -53,7 +46,6 @@ public class PerfilDeserializador implements JsonDeserializer<PerfilResponse>{
             perfilActual.setNombreUsuario(nombreUsuario);
             perfilActual.setNombreCompleto(nombreCompleto);
             perfilActual.setUrlFotoPerfil(urlFotoPerfil);
-
             perfiles.add(perfilActual); //Guardo al perfil actual en el array perfiles
         }
 

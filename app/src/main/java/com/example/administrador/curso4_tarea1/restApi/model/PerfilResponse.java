@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public class PerfilResponse {
 
-    ArrayList<Perfil> perfils;
+    ArrayList<Perfil> perfiles;
 
     public ArrayList<Perfil> getPerfil() {
-        return perfils;
+        return perfiles;
     }
 
-    public void setPerfil(ArrayList<Perfil> perfils) {
-        this.perfils = perfils;
+    public void setPerfil(ArrayList<Perfil> perfiles) {
+        this.perfiles = perfiles;
     }
 }
