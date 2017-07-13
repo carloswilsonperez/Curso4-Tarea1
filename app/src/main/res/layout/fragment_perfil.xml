@@ -23,7 +23,8 @@
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
             android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imgFotoCirular"

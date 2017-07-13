@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        >
 
         <include layout="@layout/toolbar"
             android:id="@+id/toolbar"/>
@@ -24,15 +24,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!-- Contenedor donde viven los fragments -->
-    <!--
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </android.support.v4.view.ViewPager>
-    -->
 
     <include layout="@layout/content_main"/>
 

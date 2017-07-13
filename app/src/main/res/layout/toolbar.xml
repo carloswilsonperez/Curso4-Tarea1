@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/imgFaboritas"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:contentDescription="5 favoritas"
             android:onClick="irFavoritas"
             android:src="@drawable/favotitas"
